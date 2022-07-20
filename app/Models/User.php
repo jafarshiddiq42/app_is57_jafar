@@ -19,8 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'phone',
         'password',
+        'is_admin',
+        'id_santri',
+        // 'id_lewat',
+        // 'id_berkas',
+        'pin',
+        'checkpin',
     ];
 
     /**
@@ -41,4 +47,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function siswas()
+    {
+        return $this->hasOne(Siswa::class,'id','id_santri');
+    }
 }

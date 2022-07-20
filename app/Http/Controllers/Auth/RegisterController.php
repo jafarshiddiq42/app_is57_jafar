@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -51,7 +52,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +65,60 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $nomorbaru = DB::table('siswas')->latest('id')->first();
+
+        if ($nomorbaru == null) {
+            
+            
+            DB::table('siswas')->insert([
+                'NamaLengkap' => '',
+                'id'=>1,
+                'tahunajar'=>date('Y'),
+            ]);
+            DB::table('dftrulangs')->insert([
+                'ktp_ayah'=>'default.jpg',
+            ]);
+            return User::create([
+                'name' => $data['name'],
+                'phone' => $data['phone'],
+                'password' => Hash::make($data['password']),
+                'id_santri' =>  1,
+                'id_berkas' =>  1,
+                'pin'=>rand(10000,99999),
+                'id_lewat' => 1,
+            ]);
+
+
+
+        } else {
+            DB::table('siswas')->insert([
+                'NamaLengkap' => '',
+                'tahunajar'=>date('Y'),
+                'confirmed'=>false,
+            ]);
+            // DB::table('dftrulangs')->insert([
+            //     'ktp_ayah'=>'default.jpg',
+            // ]);
+
+            return User::create([
+                'name' => $data['name'],
+                'phone' => $data['phone'],
+                'password' => Hash::make($data['password']),
+                'id_santri' => $nomorbaru->id + 1,
+                'id_berkas' => $nomorbaru->id + 1,
+                'pin'=>rand(10000,99999),
+                'id_lewat' => 1,
+            ]);
+        }
+
+
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
+            'id_santri' => $nomorbaru->id + 1,
+            
+            'id_lewat' => 1,
         ]);
     }
 }
