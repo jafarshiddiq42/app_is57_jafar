@@ -14,6 +14,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('AdminLTE/plugins/fontawesome-free/css/all.min.css')}}">
+  <script src="https://kit.fontawesome.com/03296025ab.js" crossorigin="anonymous"></script>
+
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('AdminLTE/dist/css/adminlte.min.css')}}">
 
@@ -125,46 +127,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="/home" class="nav-link @yield('PA')">
               <i class="nav-icon fas  fa-pencil-square-o"></i>
               <p>
-                Form
+                Formulir Pendaftaran
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
            
           </li>
-          @if (Auth::user()->siswas->confirmed == 1)
+          
           <li class="nav-item">
             <a href="/kartu" class="nav-link @yield('SB') " >
               <i class="nav-icon fas  fa-id-card"></i>
               <p>
-                Kartu
+                Kartu Pendaftaran
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
+          </li>
+          <br><br> 
+          <li class="nav-item">
+            <a href="{{ route('logout') }}" class="nav-link bg-danger "  onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();" >
+              <i class="nav-icon fas  fa-sign-out"></i>
+              <p>
+                Log Out
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
           </li> 
-          @endif
+      
           
-          <li class="nav-item">
-            <a href="/Pengumuman" class="nav-link @yield('SL')  @if (Auth::user()->siswas->confirmed == 0)
-              disabled 
-          @endif">
-              <i class="nav-icon fas  fa-check"></i>
-              <p>
-               Pengumuman
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/DaftarUlang" class="nav-link @yield('DU')  @if (Auth::user()->siswas->confirmed == 0)
-              disabled 
-          @endif">
-              <i class="nav-icon fas fa-pencil-square"></i>
-              <p>
-                Pendaftaran Ulang
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
+         
           {{-- <li class="nav-item">
             <a href="/admin/laporan" class="nav-link @yield('LP')">
               <i class="nav-icon fas  fa-file-pdf-o"></i>
@@ -174,17 +169,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li> --}}
-          <li class="nav-item">
-            <a href="/CallCenter" class="nav-link @yield('OPT')  @if (Auth::user()->siswas->confirmed == 0)
-              disabled 
-          @endif">
-              <i class="nav-icon fas fa-phone"></i>
-              <p>
-               call center
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
+         
 
 
         </ul>
