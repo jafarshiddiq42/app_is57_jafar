@@ -148,33 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="/admin/daftarulang" class="nav-link @yield('DU')">
-              <i class="nav-icon fas fa-pencil-square"></i>
-              <p>
-                Daftar Ulang
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/laporan" class="nav-link @yield('LP')">
-              <i class="nav-icon fas  fa-file-pdf-o"></i>
-              <p>
-               Laporan
-                {{-- <span class="right badge badge-danger">New</span> --}}
-              </p>
-            </a>
-          </li>
-          {{-- <li class="nav-item">
-            <a href="/admin/pengaturan" class=" nav-link @yield('OPT')">
-              <i class="nav-icon fas fa-cog"></i>
-              <p>
-               Pengaturan
-              </p>
-            </a>
-          </li> --}}
-
+         
 
         </ul>
       </nav>
