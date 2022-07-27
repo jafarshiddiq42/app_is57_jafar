@@ -75,9 +75,9 @@ class RegisterController extends Controller
                 'id'=>1,
                 'tahunajar'=>date('Y'),
             ]);
-            DB::table('dftrulangs')->insert([
-                'ktp_ayah'=>'default.jpg',
-            ]);
+            // DB::table('dftrulangs')->insert([
+            //     'ktp_ayah'=>'default.jpg',
+            // ]);
             return User::create([
                 'name' => $data['name'],
                 'phone' => $data['phone'],

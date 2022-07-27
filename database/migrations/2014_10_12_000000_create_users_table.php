@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('pin')->nullable();
             $table->boolean('checkpin')->nullable()->default(false);
             $table->string('id_santri')->nullable();
-            // $table->string('id_berkas')->nullable();
-            // $table->string('id_lewat')->nullable();
+          
+            $table->string('id_lewat')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_admin')->default(0);
             $table->string('password');

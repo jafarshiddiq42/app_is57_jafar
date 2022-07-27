@@ -23,8 +23,8 @@ class User extends Authenticatable
         'password',
         'is_admin',
         'id_santri',
-        // 'id_lewat',
-        // 'id_berkas',
+        'id_lewat',
+       
         'pin',
         'checkpin',
     ];
