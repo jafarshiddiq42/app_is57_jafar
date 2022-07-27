@@ -19,8 +19,10 @@ class PinController extends Controller
     public function checkpin(Request $request)
     {
         $pinasli =DB::table('users')->select('pin')->where('id','=',Auth::user()->id)->first();
+        $pintrial = $request->pin1.$request->pin2.$request->pin3.$request->pin4.$request->pin5;
 
-        if ($request->pin == $pinasli->pin) {
+        // dd($pintrial);
+        if ($pintrial == $pinasli->pin) {
           $user = User::find(Auth::user()->id);
           $user->checkpin = 1;
           $user->save(); 
