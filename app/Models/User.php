@@ -51,4 +51,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Siswa::class,'id','id_santri');
     }
+    public function lewats()
+    {
+        return $this->hasOne(Lewat::class,'id','id_lewat');
+    }
 }

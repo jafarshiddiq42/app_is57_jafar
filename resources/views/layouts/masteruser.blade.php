@@ -143,6 +143,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a href="/Pengumuman" class="nav-link @yield('SL')  ">
+              <i class="nav-icon fas  fa-check"></i>
+              <p>
+               Pengumuman
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
           <br><br> 
           <li class="nav-item">
             <a href="{{ route('logout') }}" class="nav-link bg-danger "  onclick="event.preventDefault();

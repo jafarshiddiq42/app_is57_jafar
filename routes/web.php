@@ -28,6 +28,7 @@ function(){
     Route::get('admin/home', [App\Http\Controllers\HomeController::class, 'adminhome'])->name('admin.home');
     Route::get('admin/santribaru', [App\Http\Controllers\HomeController::class, 'adminsantribaru']);
     Route::get('admin/statuslulus', [App\Http\Controllers\HomeController::class, 'adminstatuslulus']);
+    Route::post('admin/updatelulus/{id}', [App\Http\Controllers\HomeController::class, 'updatelulus']);
 }
 );
 
